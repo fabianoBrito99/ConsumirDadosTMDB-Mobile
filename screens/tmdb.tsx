@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 
-const TMDB_API_KEY = "Chave-api"; //coloque a chave api para funcionar
+const TMDB_API_KEY = "API_KEY"; //coloque a chave api para funcionar
 const SEARCH_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&language=pt-BR&query=`;
 
 interface Movie {
@@ -50,7 +50,10 @@ const TmdbScreen = ({ navigation }: any) => {
         value={query}
         onChangeText={setQuery}
       />
-      <Button title="Buscar" onPress={() => refetch()} />
+      <View >
+        <Button title="Buscar" onPress={() => refetch()} />
+      
+      </View>
       {isLoading && <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />}
       {error && <Text>Erro ao buscar filmes</Text>}
       <FlatList
@@ -94,6 +97,24 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
     borderRadius: 5,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  greenButton: {
+    backgroundColor: "green",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  greenButtonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
   },
   card: {
     backgroundColor: "#fff",
